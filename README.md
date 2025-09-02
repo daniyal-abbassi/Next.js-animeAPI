@@ -1,1 +1,1 @@
-### Next.js Learning Project: animeAPI
+### Next.js Learning - animeAPI
