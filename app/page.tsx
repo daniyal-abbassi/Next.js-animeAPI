@@ -27,7 +27,7 @@ export default async function Page(props: {
       </div>
       <div className="col-7 border rounded-3 d-flex flex-row justify-content-between flex-wrap">
         
-      <Board />
+      <Board query={query} currentPage={currentPage}/>
 
         
       </div>
