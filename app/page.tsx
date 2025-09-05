@@ -1,6 +1,7 @@
 import Board from "./ui/board";
 import List from "./ui/list";
 import Navbar from "./ui/navbar";
+import Search from "./ui/search";
 
 export default function Page() {
   return (
@@ -8,7 +9,7 @@ export default function Page() {
     <Navbar />
     <div className="container-fluid min-vh-100 d-flex flex-column justify-content-start align-items-center p-4 h4">
       <div className="search-box">
-        <h2 className="rounded-pill p-3 bg-primary">THIS IS(gonna be) SEARCH BOX HERE!!!!!</h2>
+        <Search placeholder="Search By Name..." />
       </div>
       <div className="row anime-list  p-4 container-fluid">
       <div className="col-4  border border-primary p-3 mx-4">
