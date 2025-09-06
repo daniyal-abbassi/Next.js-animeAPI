@@ -19,7 +19,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
   }
   return (
     <div className="input-group input-group-lg">
-      <span className="input-group-text" id="search-by-name">
+      <span className="input-group-text text-bg-primary" id="search-by-name">
         Search Anime
       </span>
       <input
