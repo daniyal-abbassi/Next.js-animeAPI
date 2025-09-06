@@ -170,15 +170,111 @@ body {
 }
 
 .overlayScore {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-    color: white;
+    background: transparent;
+    color: #3b82f6;
     padding: 4px 8px;
+    border: 2px solid #3b82f6;
     border-radius: 12px;
     font-size: 11px;
     font-weight: 600;
     align-self: flex-start;
     margin-top: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+}
+
+.overlayScore:hover {
+    background: #3b82f6;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+/* ===== ACTION LINKS STYLES ===== */
+.actionLinks {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.actionLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 10px;
+    border: 2px solid red;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    background: transparent;
+    color: whitesmoke;
+    cursor: pointer;
+}
+ /* my anime list icon */
+.actionLinkMal {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 15px;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    background: transparent;
+    background-color: whitesmoke;
+    cursor: pointer;
+}
+.actionLink:hover {
+    background: #3b82f6;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+/*youtube icon */
+.actionLinkY {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 10px;
+    border: 2px solid red;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    background: transparent;
+    color: whitesmoke;
+    cursor: pointer;
+}
+.actionLinkY:hover {
+    /* background: #3b82f6; */
+    border: 2px solid #3b82f6;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+.actionLinkIcon {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+}
+
+/* YouTube Icon */
+.youtubeIcon {
+    width: 14px;
+    height: 14px;
+    fill: red;
+}
+
+/* AnimeList Icon */
+.animeListIcon {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
 }
 
 .animeInfo {
@@ -203,14 +299,23 @@ body {
 }
 
 .animeScore {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-    color: white;
+    background: transparent;
+    color: #3b82f6;
     padding: 6px 12px;
+    border: 2px solid #3b82f6;
     border-radius: 20px;
     font-size: 12px;
     font-weight: 600;
     align-self: flex-start;
     margin-top: 4px;
+    transition: all 0.2s ease;
+}
+
+.animeScore:hover {
+    background: #3b82f6;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
 }
 
 .animeGrid {
