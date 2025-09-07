@@ -133,19 +133,78 @@ export default function Filters() {
       {/* Rating Filter */}
       <div className={styles.filterGroup}>
         <label className={styles.filterLabel}>Rating</label>
-        <select
-          value={currentRating}
-          onChange={(e) => handleFilterChange('rating', e.target.value)}
-          className={styles.filterSelect}
-        >
-          <option value="">All Ratings</option>
-          <option value="g">G - All Ages</option>
-          <option value="pg">PG - Children</option>
-          <option value="pg13">PG-13 - Teens 13 or older</option>
-          <option value="r17">R - 17+ (violence & profanity)</option>
-          <option value="r">R+ - Mild Nudity</option>
-          <option value="rx">Rx - Hentai</option>
-        </select>
+        <div className={styles.radioGroup}>
+          <label className={styles.radioOption}>
+            <input
+              type="radio"
+              name="rating"
+              value=""
+              checked={currentRating === ''}
+              onChange={(e) => handleFilterChange('rating', e.target.value)}
+            />
+            <span className={styles.radioLabel}>All Ratings</span>
+          </label>
+          <label className={styles.radioOption}>
+            <input
+              type="radio"
+              name="rating"
+              value="g"
+              checked={currentRating === 'g'}
+              onChange={(e) => handleFilterChange('rating', e.target.value)}
+            />
+            <span className={styles.radioLabel}>G - All Ages</span>
+          </label>
+          <label className={styles.radioOption}>
+            <input
+              type="radio"
+              name="rating"
+              value="pg"
+              checked={currentRating === 'pg'}
+              onChange={(e) => handleFilterChange('rating', e.target.value)}
+            />
+            <span className={styles.radioLabel}>PG - Children</span>
+          </label>
+          <label className={styles.radioOption}>
+            <input
+              type="radio"
+              name="rating"
+              value="pg13"
+              checked={currentRating === 'pg13'}
+              onChange={(e) => handleFilterChange('rating', e.target.value)}
+            />
+            <span className={styles.radioLabel}>PG-13 - Teens 13 or older</span>
+          </label>
+          <label className={styles.radioOption}>
+            <input
+              type="radio"
+              name="rating"
+              value="r17"
+              checked={currentRating === 'r17'}
+              onChange={(e) => handleFilterChange('rating', e.target.value)}
+            />
+            <span className={styles.radioLabel}>R - 17+ (violence & profanity)</span>
+          </label>
+          <label className={styles.radioOption}>
+            <input
+              type="radio"
+              name="rating"
+              value="r"
+              checked={currentRating === 'r'}
+              onChange={(e) => handleFilterChange('rating', e.target.value)}
+            />
+            <span className={styles.radioLabel}>R+ - Mild Nudity</span>
+          </label>
+          <label className={styles.radioOption}>
+            <input
+              type="radio"
+              name="rating"
+              value="rx"
+              checked={currentRating === 'rx'}
+              onChange={(e) => handleFilterChange('rating', e.target.value)}
+            />
+            <span className={styles.radioLabel}>Rx - Hentai</span>
+          </label>
+        </div>
       </div>
 
       {/* Sort Options */}

@@ -843,7 +843,17 @@ body {
 
 .radioOption:hover {
     background: rgba(37, 99, 235, 0.05);
-    border-color: rgba(37, 99, 235, 0.2);
+    border-color: #60a5fa;
+}
+
+.radioOption:has(input:checked) {
+    background: rgba(37, 99, 235, 0.1);
+    border-color: #60a5fa;
+}
+
+.radioOption:has(input:focus) {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.2);
 }
 
 .radioOption input[type="radio"] {
@@ -858,9 +868,13 @@ body {
     transition: all 0.2s ease;
 }
 
+.radioOption input[type="radio"]:hover {
+    border-color: #60a5fa;
+}
+
 .radioOption input[type="radio"]:checked {
-    border-color: #2563eb;
-    background: #2563eb;
+    border-color: #60a5fa;
+    background: #60a5fa;
 }
 
 .radioOption input[type="radio"]:checked::after {
@@ -875,15 +889,26 @@ body {
     background: white;
 }
 
+.radioOption input[type="radio"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3);
+}
+
 .radioLabel {
     color: #d1d5db;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
+    transition: color 0.2s ease;
 }
 
 .radioOption:hover .radioLabel {
     color: #ffffff;
+}
+
+.radioOption:has(input:checked) .radioLabel {
+    color: #60a5fa;
+    font-weight: 600;
 }
 
 /* ===== RESPONSIVE FILTER STYLES ===== */
