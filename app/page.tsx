@@ -3,6 +3,7 @@ import List from "./ui/list";
 import Navbar from "./ui/navbar";
 import Search from "./ui/search";
 import styles from "./styles.module.css";
+import { fetchAnimePages } from "./lib/data";
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -13,7 +14,7 @@ export default async function Page(props: {
   const searchParams = await props.searchParams;
   const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
-  
+  const totalPages = await fetchAnimePages(query,currentPage);  
   return (
     <>
       <Navbar />
