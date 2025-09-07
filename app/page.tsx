@@ -5,6 +5,8 @@ import Search from "./ui/search";
 import styles from "./styles.module.css";
 import { fetchAnimePages } from "./lib/data";
 import Pagination from "./ui/pagination";
+import { Suspense } from "react";
+import AnimeBoardSkeleton from "./ui/skeletons";
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -30,7 +32,9 @@ export default async function Page(props: {
             </div>
           </div>
           <div className="col-8 d-flex flex-column p-2">
-            <Board query={query} currentPage={currentPage}/>
+            <Suspense fallback={<AnimeBoardSkeleton />}>
+              <Board query={query} currentPage={currentPage}/>
+            </Suspense>
         <Pagination totalPage={totalPages} />
           </div>
         </div> {/*anime board div} */}
