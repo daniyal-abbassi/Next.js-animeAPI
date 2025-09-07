@@ -7,6 +7,7 @@ import { fetchAnimePages } from "./lib/data";
 import Pagination from "./ui/pagination";
 import { Suspense } from "react";
 import AnimeBoardSkeleton from "./ui/skeletons";
+import Filters from "./ui/filter";
 
 // ===== ENHANCED PAGE COMPONENT WITH OPTIMIZED STREAMING =====
 export default async function Page(props: {
@@ -33,6 +34,7 @@ export default async function Page(props: {
           <div className="col-3 p-3 mx-4">
             <div className={styles.filterBox}>
               <p className="h4">FILTERS GOES HERE</p>
+              <Filters />
             </div>
           </div>
           <div className="col-8 d-flex flex-column p-2">
