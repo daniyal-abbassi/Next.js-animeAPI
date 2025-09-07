@@ -345,7 +345,7 @@ body {
 
 .filter-box {
     background: #1a1a1a;
-    border: 1px solid #2a2a2a;
+    border: 1px solid whitesmoke;
     border-radius: 12px;
     padding: 24px;
     height: fit-content;

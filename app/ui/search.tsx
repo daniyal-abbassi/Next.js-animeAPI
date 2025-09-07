@@ -25,6 +25,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
         Search Anime
       </span>
       <input
+      placeholder={placeholder}
         type="text"
         className="form-control"
         aria-label="Search anime by name"

@@ -31,7 +31,7 @@ export default async function Page(props: {
             <Board query={query} currentPage={currentPage}/>
           </div>
         </div>
-      </div>
+       </div> {/*container div} */}
     </>
   );
 }
