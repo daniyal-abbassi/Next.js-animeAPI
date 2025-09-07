@@ -4,6 +4,7 @@ import Navbar from "./ui/navbar";
 import Search from "./ui/search";
 import styles from "./styles.module.css";
 import { fetchAnimePages } from "./lib/data";
+import Pagination from "./ui/pagination";
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -31,7 +32,7 @@ export default async function Page(props: {
           <div className="col-8 d-flex flex-column p-2">
             <Board query={query} currentPage={currentPage}/>
         <div className="pagination">
-          <p>Pagination goes here</p>
+          <Pagination totalPage={totalPages} />
         </div>
           </div>
         </div> {/*anime board div} */}
