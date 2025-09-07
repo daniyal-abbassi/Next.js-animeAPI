@@ -1,6 +1,42 @@
 import Image from "next/image";
 import styles from "../styles.module.css";
 
+// ===== ANIME DATA INTERFACE =====
+interface AnimeData {
+  mal_id: number;
+  title: string;
+  title_english?: string;
+  images: {
+    jpg: {
+      image_url: string;
+    };
+  };
+  type?: string;
+  episodes?: number;
+  status?: string;
+  duration?: string;
+  rating?: string;
+  season?: string;
+  year?: number;
+  studios?: Array<{ name: string }>;
+  members?: number;
+  genres?: Array<{ mal_id: number; name: string }>;
+  synopsis?: string;
+  score?: number;
+  trailer?: {
+    youtube_id: string;
+  };
+  url?: string;
+}
+
+interface ApiResponse {
+  data: AnimeData[];
+  pagination?: {
+    last_visible_page: number;
+  };
+}
+
+// ===== ENHANCED BOARD COMPONENT WITH STREAMING =====
 export default async function Board({
   query,
   currentPage,
@@ -8,15 +44,31 @@ export default async function Board({
   query: string;
   currentPage: number;
 }) {
-  const data = await fetch(
-    `https://api.jikan.moe/v4/anime?q=${query}&limit=12&page=${currentPage}`
-  );
-  const results = await data.json();
+  // Add error handling and timeout for better streaming experience
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
 
-  return (
-    <div className={styles.animeGrid}>
-      {results?.data &&
-        results.data.map((anime: any) => (
+  try {
+    const data = await fetch(
+      `https://api.jikan.moe/v4/anime?q=${query}&limit=12&page=${currentPage}`,
+      {
+        signal: controller.signal,
+        next: { revalidate: 300 }, // Cache for 5 minutes
+      }
+    );
+    
+    clearTimeout(timeoutId);
+    
+    if (!data.ok) {
+      throw new Error(`API request failed: ${data.status}`);
+    }
+    
+    const results: ApiResponse = await data.json();
+
+    return (
+      <div className={styles.animeGrid}>
+        {results?.data && results.data.length > 0 ? (
+          results.data.map((anime: AnimeData) => (
           <div className={styles.animeCard} key={anime.mal_id}>
             <div className={styles.animeImageContainer}>
               <Image
@@ -101,7 +153,7 @@ export default async function Board({
                         <span className={styles.overlayInfoLabel}>Studio:</span>
                         <span className={styles.overlayInfoValue}>
                           {anime.studios
-                            .map((studio: any) => studio.name)
+                            .map((studio) => studio.name)
                             .join(", ")}
                         </span>
                       </div>
@@ -121,7 +173,7 @@ export default async function Board({
 
                   {anime.genres && anime.genres.length > 0 && (
                     <div className={styles.overlayGenres}>
-                      {anime.genres.slice(0, 4).map((genre: any) => (
+                      {anime.genres.slice(0, 4).map((genre) => (
                         <span
                           key={genre.mal_id}
                           className={styles.overlayGenre}
@@ -194,7 +246,30 @@ export default async function Board({
               </div>
             </div>
           </div>
-        ))}
-    </div>
-  );
+        ))
+        ) : (
+          <div className={styles.noResults}>
+            <h3>No anime found for "{query}"</h3>
+            <p>Try searching with different keywords</p>
+          </div>
+        )}
+      </div>
+    );
+  } catch (error) {
+    clearTimeout(timeoutId);
+    console.error('Error fetching anime data:', error);
+    
+    return (
+      <div className={styles.errorContainer}>
+        <h3>Failed to load anime data</h3>
+        <p>Please try again later or check your internet connection</p>
+        <button 
+          onClick={() => window.location.reload()} 
+          className={styles.retryButton}
+        >
+          Retry
+        </button>
+      </div>
+    );
+  }
 }

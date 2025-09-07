@@ -566,3 +566,231 @@ body {
         font-size: 12px;
     }
 }
+
+/* ===== SKELETON LOADING STYLES ===== */
+@keyframes shimmer {
+    0% {
+        background-position: -200px 0;
+    }
+    100% {
+        background-position: calc(200px + 100%) 0;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.skeletonCard {
+    background: #000000;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 280px;
+    margin-bottom: 24px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.skeletonImageContainer {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    background: #1a1a1a;
+}
+
+.skeletonImage {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        #2a2a2a 0px,
+        #3a3a3a 40px,
+        #2a2a2a 80px
+    );
+    background-size: 200px 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.skeletonContent {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.skeletonTitle {
+    height: 20px;
+    background: linear-gradient(
+        90deg,
+        #2a2a2a 0px,
+        #3a3a3a 40px,
+        #2a2a2a 80px
+    );
+    background-size: 200px 100%;
+    border-radius: 4px;
+    animation: shimmer 1.5s ease-in-out infinite;
+    animation-delay: 0.2s;
+}
+
+.skeletonActions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.skeletonScore {
+    width: 60px;
+    height: 32px;
+    background: linear-gradient(
+        90deg,
+        #2a2a2a 0px,
+        #3a3a3a 40px,
+        #2a2a2a 80px
+    );
+    background-size: 200px 100%;
+    border-radius: 20px;
+    animation: shimmer 1.5s ease-in-out infinite;
+    animation-delay: 0.4s;
+}
+
+.skeletonButton {
+    width: 80px;
+    height: 32px;
+    background: linear-gradient(
+        90deg,
+        #2a2a2a 0px,
+        #3a3a3a 40px,
+        #2a2a2a 80px
+    );
+    background-size: 200px 100%;
+    border-radius: 12px;
+    animation: shimmer 1.5s ease-in-out infinite;
+    animation-delay: 0.6s;
+}
+
+/* ===== RESPONSIVE SKELETON STYLES ===== */
+@media (max-width: 768px) {
+    .skeletonCard {
+        max-width: 240px;
+    }
+    
+    .skeletonImageContainer {
+        height: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .skeletonCard {
+        max-width: 100%;
+    }
+}
+
+/* ===== ERROR AND NO RESULTS STYLES ===== */
+.errorContainer,
+.noResults {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+    text-align: center;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    margin: 24px 0;
+    grid-column: 1 / -1;
+}
+
+.errorContainer h3,
+.noResults h3 {
+    color: #ef4444;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+}
+
+.noResults h3 {
+    color: #fbbf24;
+}
+
+.errorContainer p,
+.noResults p {
+    color: #9ca3af;
+    font-size: 14px;
+    margin: 0 0 16px 0;
+    line-height: 1.5;
+}
+
+.retryButton {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.retryButton:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+}
+
+/* ===== PAGINATION SKELETON STYLES ===== */
+.paginationSkeleton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 32px 0;
+    padding: 16px 0;
+}
+
+.paginationSkeleton::before {
+    content: '';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(
+        90deg,
+        #2a2a2a 0px,
+        #3a3a3a 40px,
+        #2a2a2a 80px
+    );
+    background-size: 200px 100%;
+    border-radius: 8px;
+    animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.paginationSkeleton::after {
+    content: '';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(
+        90deg,
+        #2a2a2a 0px,
+        #3a3a3a 40px,
+        #2a2a2a 80px
+    );
+    background-size: 200px 100%;
+    border-radius: 8px;
+    animation: shimmer 1.5s ease-in-out infinite;
+    animation-delay: 0.3s;
+}

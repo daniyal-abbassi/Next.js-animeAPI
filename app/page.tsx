@@ -8,6 +8,7 @@ import Pagination from "./ui/pagination";
 import { Suspense } from "react";
 import AnimeBoardSkeleton from "./ui/skeletons";
 
+// ===== ENHANCED PAGE COMPONENT WITH OPTIMIZED STREAMING =====
 export default async function Page(props: {
   searchParams?: Promise<{
     query?: string;
@@ -17,7 +18,10 @@ export default async function Page(props: {
   const searchParams = await props.searchParams;
   const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
-  const totalPages = await fetchAnimePages(query,currentPage);  
+  
+  // Fetch total pages in parallel with the main content
+  const totalPagesPromise = fetchAnimePages(query, currentPage);
+  
   return (
     <>
       <Navbar />
@@ -32,13 +36,31 @@ export default async function Page(props: {
             </div>
           </div>
           <div className="col-8 d-flex flex-column p-2">
-            <Suspense fallback={<AnimeBoardSkeleton />}>
+            {/* Optimized Suspense boundary for instant skeleton display */}
+            <Suspense 
+              fallback={<AnimeBoardSkeleton />}
+              key={`${query}-${currentPage}`} // Force re-render on search/pagination
+            >
               <Board query={query} currentPage={currentPage}/>
             </Suspense>
-        <Pagination totalPage={totalPages} />
+            
+            {/* Pagination with its own Suspense boundary */}
+            <Suspense fallback={<div className={styles.paginationSkeleton}></div>}>
+              <PaginationWrapper totalPagesPromise={totalPagesPromise} />
+            </Suspense>
           </div>
-        </div> {/*anime board div} */}
-       </div> {/*container div} */}
+        </div>
+      </div>
     </>
   );
+}
+
+// ===== PAGINATION WRAPPER COMPONENT =====
+async function PaginationWrapper({ 
+  totalPagesPromise 
+}: { 
+  totalPagesPromise: Promise<number> 
+}) {
+  const totalPages = await totalPagesPromise;
+  return <Pagination totalPage={totalPages} />;
 }
