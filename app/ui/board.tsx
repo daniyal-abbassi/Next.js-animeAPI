@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "../styles.module.css";
+import styles from "../styles.board.module.css";
 
 // ===== ANIME DATA INTERFACE =====
 interface AnimeData {
@@ -36,7 +36,7 @@ interface ApiResponse {
   };
 }
 
-// ===== ENHANCED BOARD COMPONENT WITH STREAMING =====
+
 export default async function Board({
   query,
   currentPage,
