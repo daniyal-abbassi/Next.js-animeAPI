@@ -33,7 +33,14 @@ export default async function Page(props: {
   const sort = searchParams?.sort || '';
   
   // Fetch total pages in parallel with the main content
-  const totalPagesPromise = fetchAnimePages(query, currentPage);
+  const totalPagesPromise = fetchAnimePages(query, currentPage, {
+    sfw,
+    type,
+    status,
+    rating,
+    orderBy,
+    sort
+  });
   
   return (
     <>
@@ -67,7 +74,10 @@ export default async function Page(props: {
             </Suspense>
             
             {/* Pagination with its own Suspense boundary */}
-            <Suspense fallback={<div className={styles.paginationSkeleton}></div>}>
+            <Suspense 
+              fallback={<div className={styles.paginationSkeleton}></div>}
+              key={`pagination-${query}-${currentPage}-${sfw}-${type}-${status}-${rating}-${orderBy}-${sort}`}
+            >
               <PaginationWrapper totalPagesPromise={totalPagesPromise} />
             </Suspense>
           </div>
