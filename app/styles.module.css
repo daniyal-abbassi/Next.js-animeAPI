@@ -338,6 +338,108 @@ body {
     max-width: 600px;
 }
 
+/* ===== SEARCH COMPONENT STYLES ===== */
+.searchContainer {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.searchInputGroup {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #1a1a1a;
+    border: 2px solid #374151;
+    border-radius: 12px;
+    padding: 4px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.searchInputGroup:focus-within {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+}
+
+.searchInputGroup:hover {
+    border-color: #4b5563;
+}
+
+.searchIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;
+    color: #9ca3af;
+    transition: color 0.2s ease;
+}
+
+.searchInputGroup:focus-within .searchIcon {
+    color: #60a5fa;
+}
+
+.searchInput {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px 8px;
+    border-radius: 8px;
+}
+
+.searchInput::placeholder {
+    color: #6b7280;
+    font-weight: 400;
+}
+
+.clearSearchBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: #9ca3af;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-right: 8px;
+}
+
+.clearSearchBtn:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+.clearSearchBtn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+/* ===== RESPONSIVE SEARCH STYLES ===== */
+@media (max-width: 768px) {
+    .searchContainer {
+        max-width: 100%;
+    }
+    
+    .searchInputGroup {
+        border-radius: 10px;
+    }
+    
+    .searchInput {
+        font-size: 14px;
+        padding: 10px 6px;
+    }
+    
+    .searchIcon {
+        padding: 10px 12px;
+    }
+}
+
 .animeList {
     background-color: #171717;
     border: none !important;
