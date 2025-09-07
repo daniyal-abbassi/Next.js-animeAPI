@@ -40,19 +40,43 @@ interface ApiResponse {
 export default async function Board({
   query,
   currentPage,
-  sfw
+  sfw,
+  type,
+  status,
+  rating,
+  orderBy,
+  sort
 }: {
   query: string;
   currentPage: number;
   sfw: string;
+  type: string;
+  status: string;
+  rating: string;
+  orderBy: string;
+  sort: string;
 }) {
   // Add error handling and timeout for better streaming experience
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
 
   try {
+    // Build query parameters dynamically
+    const queryParams = new URLSearchParams();
+    
+    if (query) queryParams.set('q', query);
+    if (sfw) queryParams.set('sfw', sfw);
+    if (type) queryParams.set('type', type);
+    if (status) queryParams.set('status', status);
+    if (rating) queryParams.set('rating', rating);
+    if (orderBy) queryParams.set('order_by', orderBy);
+    if (sort) queryParams.set('sort', sort);
+    
+    queryParams.set('limit', '12');
+    queryParams.set('page', currentPage.toString());
+
     const data = await fetch(
-      `https://api.jikan.moe/v4/anime?sfw=${sfw}&q=${query}&limit=12&page=${currentPage}`,
+      `https://api.jikan.moe/v4/anime?${queryParams.toString()}`,
       {
         signal: controller.signal,
         next: { revalidate: 300 }, // Cache for 5 minutes

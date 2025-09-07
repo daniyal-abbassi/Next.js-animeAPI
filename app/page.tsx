@@ -14,13 +14,24 @@ export default async function Page(props: {
   searchParams?: Promise<{
     query?: string;
     page?: string;
-    sfw?:string;
+    sfw?: string;
+    type?: string;
+    status?: string;
+    rating?: string;
+    order_by?: string;
+    sort?: string;
   }>;
 }) {
   const searchParams = await props.searchParams;
   const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
   const sfw = searchParams?.sfw || '';
+  const type = searchParams?.type || '';
+  const status = searchParams?.status || '';
+  const rating = searchParams?.rating || '';
+  const orderBy = searchParams?.order_by || '';
+  const sort = searchParams?.sort || '';
+  
   // Fetch total pages in parallel with the main content
   const totalPagesPromise = fetchAnimePages(query, currentPage);
   
@@ -34,7 +45,6 @@ export default async function Page(props: {
         <div className={`row ${styles.animeList} p-4 container-fluid`}>
           <div className="col-3 p-3 mx-4">
             <div className={styles.filterBox}>
-              <p className="h4">FILTERS GOES HERE</p>
               <Filters />
             </div>
           </div>
@@ -42,9 +52,18 @@ export default async function Page(props: {
             {/* Optimized Suspense boundary for instant skeleton display */}
             <Suspense 
               fallback={<AnimeBoardSkeleton />}
-              key={`${query}-${currentPage}`} // Force re-render on search/pagination
+              key={`${query}-${currentPage}-${sfw}-${type}-${status}-${rating}-${orderBy}-${sort}`} // Force re-render on any filter change
             >
-              <Board query={query} currentPage={currentPage} sfw={sfw}/>
+              <Board 
+                query={query} 
+                currentPage={currentPage} 
+                sfw={sfw}
+                type={type}
+                status={status}
+                rating={rating}
+                orderBy={orderBy}
+                sort={sort}
+              />
             </Suspense>
             
             {/* Pagination with its own Suspense boundary */}
