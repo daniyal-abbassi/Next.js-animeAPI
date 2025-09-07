@@ -40,7 +40,7 @@ export async function fetchAnimePages(
         
         const results = await data.json();
         const totalPage = results.pagination?.last_visible_page || 1;
-        console.log('total pages is: ', totalPage);
+        
         return totalPage;
     } catch (error) {
         console.error('Failed to query the pageNumber: ', error);
