@@ -9,7 +9,7 @@ export default async function Board({
   currentPage: number;
 }) {
   const data = await fetch(
-    `https://api.jikan.moe/v4/anime?q=${query}&limit=12`
+    `https://api.jikan.moe/v4/anime?q=${query}&limit=12&page=${currentPage}`
   );
   const results = await data.json();
 

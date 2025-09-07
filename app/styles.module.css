@@ -327,23 +327,23 @@ body {
 }
 
 /* ===== LAYOUT IMPROVEMENTS ===== */
-.container-fluid {
+.containerFluid {
     background-color: #171717;
     min-height: 100vh;
 }
 
-.search-box {
+.searchBox {
     margin-bottom: 32px;
     width: 100%;
     max-width: 600px;
 }
 
-.anime-list {
+.animeList {
     background-color: #171717;
     border: none !important;
 }
 
-.filter-box {
+.filterBox {
     background: #1a1a1a;
     border: 1px solid whitesmoke;
     border-radius: 12px;
@@ -353,7 +353,7 @@ body {
     top: 24px;
 }
 
-.filter-box p {
+.filterBox p {
     color: #fbbf24;
     font-weight: 600;
     margin: 0;

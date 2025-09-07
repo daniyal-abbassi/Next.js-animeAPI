@@ -29,8 +29,11 @@ export default async function Page(props: {
           </div>
           <div className="col-8 d-flex flex-column p-2">
             <Board query={query} currentPage={currentPage}/>
-          </div>
+        <div className="pagination">
+          <p>Pagination goes here</p>
         </div>
+          </div>
+        </div> {/*anime board div} */}
        </div> {/*container div} */}
     </>
   );
