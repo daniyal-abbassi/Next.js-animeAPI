@@ -14,12 +14,13 @@ export default async function Page(props: {
   searchParams?: Promise<{
     query?: string;
     page?: string;
+    sfw?:string;
   }>;
 }) {
   const searchParams = await props.searchParams;
   const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
-  
+  const sfw = searchParams?.sfw || '';
   // Fetch total pages in parallel with the main content
   const totalPagesPromise = fetchAnimePages(query, currentPage);
   
@@ -43,7 +44,7 @@ export default async function Page(props: {
               fallback={<AnimeBoardSkeleton />}
               key={`${query}-${currentPage}`} // Force re-render on search/pagination
             >
-              <Board query={query} currentPage={currentPage}/>
+              <Board query={query} currentPage={currentPage} sfw={sfw}/>
             </Suspense>
             
             {/* Pagination with its own Suspense boundary */}

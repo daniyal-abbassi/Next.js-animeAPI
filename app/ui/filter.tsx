@@ -12,6 +12,7 @@ export default function Filters() {
     const params = new URLSearchParams(searchParams);
     const value = e.target.value; //true or false
     console.log("this is sfw radioBtn: ", value);
+    console.log("this is our path: ",pathname);
     if (value) {
       params.set("sfw", value);
     } else {

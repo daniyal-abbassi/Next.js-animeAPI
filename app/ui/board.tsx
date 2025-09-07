@@ -40,9 +40,11 @@ interface ApiResponse {
 export default async function Board({
   query,
   currentPage,
+  sfw
 }: {
   query: string;
   currentPage: number;
+  sfw: string;
 }) {
   // Add error handling and timeout for better streaming experience
   const controller = new AbortController();
@@ -50,7 +52,7 @@ export default async function Board({
 
   try {
     const data = await fetch(
-      `https://api.jikan.moe/v4/anime?q=${query}&limit=12&page=${currentPage}`,
+      `https://api.jikan.moe/v4/anime?sfw=${sfw}&q=${query}&limit=12&page=${currentPage}`,
       {
         signal: controller.signal,
         next: { revalidate: 300 }, // Cache for 5 minutes
