@@ -1,26 +1,27 @@
 
 
 
-import styles from "../styles/styles.skeleton.module.css";
+import skeletonStyles from "../styles/styles.skeleton.module.css";
+import boardStyles from "../styles/styles.board.module.css";
 
 // ===== INDIVIDUAL SKELETON CARD COMPONENT =====
 function SkeletonCard() {
   return (
-    <div className={styles.skeletonCard}>
+    <div className={skeletonStyles.skeletonCard}>
       {/* Image skeleton */}
-      <div className={styles.skeletonImageContainer}>
-        <div className={styles.skeletonImage}></div>
+      <div className={skeletonStyles.skeletonImageContainer}>
+        <div className={skeletonStyles.skeletonImage}></div>
       </div>
       
       {/* Content skeleton */}
-      <div className={styles.skeletonContent}>
+      <div className={skeletonStyles.skeletonContent}>
         {/* Title skeleton */}
-        <div className={styles.skeletonTitle}></div>
+        <div className={skeletonStyles.skeletonTitle}></div>
         
         {/* Action links skeleton */}
-        <div className={styles.skeletonActions}>
-          <div className={styles.skeletonScore}></div>
-          <div className={styles.skeletonButton}></div>
+        <div className={skeletonStyles.skeletonActions}>
+          <div className={skeletonStyles.skeletonScore}></div>
+          <div className={skeletonStyles.skeletonButton}></div>
         </div>
       </div>
     </div>
@@ -30,7 +31,7 @@ function SkeletonCard() {
 // ===== MAIN SKELETON BOARD COMPONENT =====
 export default function AnimeBoardSkeleton() {
   return (
-    <div className={styles.animeGrid}>
+    <div className={boardStyles.animeGrid}>
       {Array.from({ length: 12 }, (_, index) => (
         <SkeletonCard key={index} />
       ))}
