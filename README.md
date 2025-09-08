@@ -153,31 +153,72 @@ Environment: none required for the public Jikan API.
 ### Jikan: Search Anime (getAnimeSearch)
 Endpoint: `GET https://api.jikan.moe/v4/anime`
 
-Query Parameters:
-- unapproved: boolean — include unapproved user-submitted entries (flag only: `?unapproved`)
-- page: integer — page number
-- limit: integer — items per page
-- q: string — search query
-- type: "tv" | "movie" | "ova" | "special" | "ona" | "music" | "cm" | "pv" | "tv_special"
-- score: number — exact score
-- min_score: number — minimum score
-- max_score: number — maximum score
-- status: "airing" | "complete" | "upcoming"
-- rating: "g" | "pg" | "pg13" | "r17" | "r" | "rx"
-  - G (All Ages), PG (Children), PG-13 (Teens 13+), R (17+), R+ (Mild Nudity), Rx (Hentai)
-- sfw: boolean — filter out adult entries
-- genres: string — comma-separated genre IDs (e.g., `1,2,3`)
-- genres_exclude: string — exclude these genre IDs
-- order_by: "mal_id" | "title" | "start_date" | "end_date" | "episodes" | "score" | "scored_by" | "rank" | "popularity" | "members" | "favorites"
-- sort: "desc" | "asc"
-- letter: string — entries starting with letter
-- producers: string — comma-separated producer IDs
-- start_date: string — YYYY or YYYY-MM or YYYY-MM-DD
-- end_date: string — YYYY or YYYY-MM or YYYY-MM-DD
+#### Query Parameters
 
-Example:
-```
+| Param | Type | Allowed values / format | Description |
+| --- | --- | --- | --- |
+| `unapproved` | boolean | flag only (`?unapproved`) | Include user-submitted entries not yet approved by MAL |
+| `page` | integer | 1..n | Page number |
+| `limit` | integer | 1..25 (API default 25) | Items per page |
+| `q` | string | any | Search query (title text) |
+| `type` | string | `tv`, `movie`, `ova`, `special`, `ona`, `music`, `cm`, `pv`, `tv_special` | Filter by anime type |
+| `score` | number | 0..10 | Exact score |
+| `min_score` | number | 0..10 | Minimum score |
+| `max_score` | number | 0..10 | Maximum score |
+| `status` | string | `airing`, `complete`, `upcoming` | Airing status |
+| `rating` | string | `g`, `pg`, `pg13`, `r17`, `r`, `rx` | Audience rating (G, PG, PG-13, R-17, R+, Rx) |
+| `sfw` | boolean | `true`/`false` | Exclude adult entries |
+| `genres` | string | comma-separated IDs (e.g., `1,2,3`) | Include these genres |
+| `genres_exclude` | string | comma-separated IDs | Exclude these genres |
+| `order_by` | string | `mal_id`, `title`, `start_date`, `end_date`, `episodes`, `score`, `scored_by`, `rank`, `popularity`, `members`, `favorites` | Sort field |
+| `sort` | string | `desc`, `asc` | Sort direction |
+| `letter` | string | single letter | Title starting letter |
+| `producers` | string | comma-separated IDs | Filter by producers |
+| `start_date` | string | `YYYY` or `YYYY-MM` or `YYYY-MM-DD` | Start date filter |
+| `end_date` | string | `YYYY` or `YYYY-MM` or `YYYY-MM-DD` | End date filter |
+
+#### Example request
+```http
 GET https://api.jikan.moe/v4/anime?q=death&type=tv&sfw=true&order_by=score&sort=desc&page=1&limit=12
+```
+
+#### Response shape (simplified)
+```json
+{
+  "pagination": {
+    "last_visible_page": 1000,
+    "has_next_page": true,
+    "items": { "count": 12, "total": 12000, "per_page": 12 }
+  },
+  "data": [
+    {
+      "mal_id": 5114,
+      "url": "https://myanimelist.net/anime/5114/Fullmetal_Alchemist__Brotherhood",
+      "images": {
+        "jpg": { "image_url": "https://cdn.myanimelist.net/.../image.jpg" },
+        "webp": { "image_url": "https://cdn.myanimelist.net/.../image.webp" }
+      },
+      "title": "Fullmetal Alchemist: Brotherhood",
+      "title_english": "",
+      "title_japanese": "鋼の錬金術師",
+      "type": "tv",
+      "episodes": 64,
+      "status": "Finished Airing",
+      "rating": "R - 17+",
+      "score": 9.1,
+      "scored_by": 2000000,
+      "rank": 1,
+      "popularity": 1,
+      "members": 3800000,
+      "favorites": 250000,
+      "year": 2009,
+      "aired": { "from": "2009-04-05", "to": "2010-07-04" },
+      "synopsis": "Two brothers search for the Philosopher's Stone...",
+      "producers": [{ "mal_id": 23, "name": "Aniplex" }],
+      "genres": [{ "mal_id": 1, "name": "Action" }]
+    }
+  ]
+}
 ```
 
 ---
