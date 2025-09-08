@@ -2,7 +2,7 @@
 import { usePathname, useSearchParams } from "next/navigation"
 import { generatePagination } from "../lib/utils";
 import Link from "next/link";
-import styles from "../styles.module.css";
+import styles from "../styles.pagination.module.css";
 
 export default function Pagination({totalPage}:{totalPage: number}) {
 
