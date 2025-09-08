@@ -1,4 +1,12 @@
 /* ===== ANIME CARD STYLES ===== */
+.animeGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    padding: 24px 0;
+    width: 100%;
+}
+
 .animeCard {
     background: #000000;
     border: 1px solid #2a2a2a;
@@ -138,9 +146,9 @@
     line-height: 1.5;
     margin-top: 8px;
     display: -webkit-box;
-    -webkit-line-clamp: 6;
+    line-clamp: 6;
     -webkit-box-orient: vertical;
-    overflow: hidden;
+    /* overflow: scroll; */
     text-overflow: ellipsis;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
 }
@@ -311,10 +319,4 @@
     box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
 }
 
-.animeGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 24px;
-    padding: 24px 0;
-    width: 100%;
-}
+
