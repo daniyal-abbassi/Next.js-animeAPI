@@ -116,16 +116,20 @@ nextjs-anime-api/
 ---
 
 ## Screenshots
-Add your screenshots to `public/` and reference them here, for example:
+Screens from the running app:
 
-- Home and search state
-  - `![Home](public/screenshot-home.png)`
-- Filters and pagination
-  - `![Filters](public/screenshot-filters.png)`
+- Main page
+  - ![Main page](public/screenshots/main-page.png)
+- Filters panel
+  - ![Filters](public/screenshots/filters.png)
+- Overlay pagination
+  - ![Overlay pagination](public/screenshots/overLay-pagination.png)
+- Responsive design
+  - ![Responsive design](public/screenshots/respomsive-design.png)
+- Search close button
+  - ![Search close button](public/screenshots/search-closeBtn.png)
 - Loading skeletons
-  - `![Skeletons](public/screenshot-skeletons.png)`
-- Error state
-  - `![Error](public/screenshot-error.png)`
+  - ![Loading skeletons](public/screenshots/loading-skeleton.png)
 
 ---
 
