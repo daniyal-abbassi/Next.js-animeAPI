@@ -289,12 +289,19 @@ export default async function Board({
       <div className={styles.errorContainer}>
         <h3>Failed to load anime data</h3>
         <p>Please try again later or check your internet connection</p>
-        <button 
-           
-          className={styles.retryButton}
-        >
-          Retry
-        </button>
+        <form method="GET">
+          {query && <input type="hidden" name="q" value={query} />}
+          {sfw && <input type="hidden" name="sfw" value={sfw} />}
+          {type && <input type="hidden" name="type" value={type} />}
+          {status && <input type="hidden" name="status" value={status} />}
+          {rating && <input type="hidden" name="rating" value={rating} />}
+          {orderBy && <input type="hidden" name="order_by" value={orderBy} />}
+          {sort && <input type="hidden" name="sort" value={sort} />}
+          {currentPage && (
+            <input type="hidden" name="page" value={currentPage.toString()} />
+          )}
+          <button type="submit" className={styles.retryButton}>Retry</button>
+        </form>
       </div>
     );
   }
