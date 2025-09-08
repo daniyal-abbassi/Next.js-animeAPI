@@ -53,12 +53,12 @@ export default async function Page(props: {
           <Search placeholder="Search By Name..." />
         </div>
         <div className={`row ${styles.animeList} p-4 container-fluid`}>
-          <div className="col-3 p-3 mx-4">
+          <div className={`col-3 p-3 mx-4 ${styles.filterContainer}`}>
             <div className={styles.filterBox}>
               <Filters />
             </div>
           </div>
-          <div className="col-8 d-flex flex-column p-2">
+          <div className={`col-8 d-flex flex-column p-2 ${styles.animeGridContainer}`}>
             {/* Optimized Suspense boundary for instant skeleton display */}
             <Suspense 
               fallback={<AnimeBoardSkeleton />}

@@ -93,3 +93,18 @@ body {
     animation: shimmer 1.5s ease-in-out infinite;
     animation-delay: 0.3s;
 }
+
+@media (max-width: 980px) {
+    .filterContainer {
+        width: 100vw;
+        text-align: center;
+    }
+    .filterBox {
+        height: fit-content;
+        position: relative;
+        top: 24px;
+    }
+    .animeGridContainer {
+        width: 100vw;
+    }
+}
