@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "../styles.board.module.css";
+import styles from "../styles/styles.board.module.css";
 
 // ===== ANIME DATA INTERFACE =====
 interface AnimeData {

@@ -1,8 +1,7 @@
 import Board from "./ui/board";
-import List from "./ui/list";
 import Navbar from "./ui/navbar";
 import Search from "./ui/search";
-import styles from "./styles.module.css";
+import styles from "./styles/styles.module.css"
 import { fetchAnimePages } from "./lib/data";
 import Pagination from "./ui/pagination";
 import { Suspense } from "react";

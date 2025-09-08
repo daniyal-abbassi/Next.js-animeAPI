@@ -1,7 +1,7 @@
 
 
 
-import styles from "../styles.skeleton.module.css";
+import styles from "../styles/styles.skeleton.module.css";
 
 // ===== INDIVIDUAL SKELETON CARD COMPONENT =====
 function SkeletonCard() {
