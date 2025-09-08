@@ -2,6 +2,7 @@
 
 import { useEffect } from "react"
 import styles from "@/app/styles/styles.board.module.css";
+import { useRouter } from "next/navigation";
 
 export default function Error({
     error,
@@ -10,6 +11,7 @@ export default function Error({
     error: Error & {digest?: string};
     reset: () => void;
 }) {
+    const router = useRouter();
     useEffect(()=>{
         console.log(error);
     },[error]);
@@ -20,7 +22,16 @@ export default function Error({
           <p>Please try again later or check your internet connection</p>
           <button 
              onClick={
-                () => reset()
+                () => {
+                    try {
+                        router.replace('/');
+                        router.refresh();
+                    } finally {
+                        reset();
+                        // Hard fallback in case router is stuck in error state
+                        setTimeout(() => { if (typeof window !== 'undefined') window.location.assign('/'); }, 0);
+                    }
+                }
              }
             className={styles.retryButton}
           >

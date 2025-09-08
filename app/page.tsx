@@ -7,6 +7,7 @@ import Pagination from "./ui/pagination";
 import { Suspense } from "react";
 import AnimeBoardSkeleton from "./ui/skeletons";
 import Filters from "./ui/filter";
+import { notFound } from "next/navigation";
 
 // ===== ENHANCED PAGE COMPONENT WITH OPTIMIZED STREAMING =====
 export default async function Page(props: {
@@ -41,6 +42,9 @@ export default async function Page(props: {
     sort
   });
   
+  if(!totalPagesPromise) {
+    notFound();
+  }
   return (
     <>
       <Navbar />
