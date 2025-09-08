@@ -2,7 +2,7 @@
 
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
-import styles from "../styles.module.css";
+import styles from "../styles.filters.module.css";
 
 // ===== FILTER TYPES =====
 interface FilterState {

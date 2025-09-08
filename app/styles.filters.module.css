@@ -1,0 +1,183 @@
+/* ===== FILTER STYLES ===== */
+.filtersContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;
+}
+
+.filtersHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.filtersTitle {
+    color: #fbbf24;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.clearFiltersBtn {
+    background: transparent;
+    color: #6b7280;
+    border: 1px solid #374151;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.clearFiltersBtn:hover {
+    background: #374151;
+    color: #ffffff;
+    border-color: #4b5563;
+}
+
+.filterGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filterLabel {
+    color: #e5e7eb;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.filterSelect {
+    background: #1a1a1a;
+    border: 1px solid #374151;
+    border-radius: 8px;
+    color: #ffffff;
+    padding: 10px 12px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.filterSelect:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.filterSelect:hover {
+    border-color: #4b5563;
+}
+
+.radioGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.radioOption {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.radioOption:hover {
+    background: rgba(37, 99, 235, 0.05);
+    border-color: #60a5fa;
+}
+
+.radioOption:has(input:checked) {
+    background: rgba(37, 99, 235, 0.1);
+    border-color: #60a5fa;
+}
+
+.radioOption:has(input:focus) {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.2);
+}
+
+.radioOption input[type="radio"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #4b5563;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.radioOption input[type="radio"]:hover {
+    border-color: #60a5fa;
+}
+
+.radioOption input[type="radio"]:checked {
+    border-color: #60a5fa;
+    background: #60a5fa;
+}
+
+.radioOption input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: white;
+}
+
+.radioOption input[type="radio"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3);
+}
+
+.radioLabel {
+    color: #d1d5db;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.radioOption:hover .radioLabel {
+    color: #ffffff;
+}
+
+.radioOption:has(input:checked) .radioLabel {
+    color: #60a5fa;
+    font-weight: 600;
+}
+
+/* ===== RESPONSIVE FILTER STYLES ===== */
+@media (max-width: 768px) {
+    .filtersContainer {
+        gap: 16px;
+    }
+    
+    .filtersHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .filtersTitle {
+        font-size: 16px;
+    }
+    
+    .clearFiltersBtn {
+        align-self: flex-end;
+    }
+}
