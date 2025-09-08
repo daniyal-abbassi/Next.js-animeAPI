@@ -3,7 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import { usePathname, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
-import styles from "../styles.module.css";
+import styles from "../styles.search.module.css";
 
 export default function Search({ placeholder }: { placeholder: string }) {
   const searchParams = useSearchParams();
