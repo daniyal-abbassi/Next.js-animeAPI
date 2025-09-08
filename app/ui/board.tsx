@@ -211,7 +211,7 @@ export default async function Board({
                   )}
 
                   {anime.synopsis && (
-                    <p className={styles.overlaySynopsis}>{anime.synopsis}</p>
+                    <p className={styles.overlaySynopsis}>{anime.synopsis.slice(0,300)} .... </p>
                   )}
 
                   <div className={styles.actionLinks}>
