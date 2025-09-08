@@ -320,3 +320,83 @@
 }
 
 
+/* ===== ERROR AND NO RESULTS STYLES ===== */
+.errorContainer,
+.noResults {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+    text-align: center;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    margin: 24px 0;
+    grid-column: 1 / -1;
+}
+
+.errorContainer h3,
+.noResults h3 {
+    color: #ef4444;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+}
+
+.noResults h3 {
+    color: #fbbf24;
+}
+
+.errorContainer p,
+.noResults p {
+    color: #9ca3af;
+    font-size: 14px;
+    margin: 0 0 16px 0;
+    line-height: 1.5;
+}
+
+.retryButton {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.retryButton:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .animeGrid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 16px;
+    }
+    
+    .animeCard {
+        max-width: 240px;
+    }
+    
+    .animeImageContainer {
+        height: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .animeGrid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .animeCard {
+        max-width: 100%;
+    }
+}
