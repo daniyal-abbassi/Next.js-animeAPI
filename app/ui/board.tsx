@@ -290,7 +290,7 @@ export default async function Board({
         <h3>Failed to load anime data</h3>
         <p>Please try again later or check your internet connection</p>
         <button 
-          onClick={() => window.location.reload()} 
+           
           className={styles.retryButton}
         >
           Retry
